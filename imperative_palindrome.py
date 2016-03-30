@@ -1,17 +1,14 @@
 import re
 
-def reverse_string(text):
-    if len(text) == 0:
-         return ''
-    else:
-        return reverse_string(text[1:]) + text[0]
-
 def is_palindrome(sentence):
     string = sentence.lower()
     pattern = r'[^A-Za-z]'
     maybe_palindrome = re.sub(pattern, '', string)
-    backwards_maybe_drome = reverse_string(maybe_palindrome)
-    if maybe_palindrome == backwards_maybe_drome:
+    reversed_characters = []
+    for letter in maybe_palindrome:
+        reversed_characters.insert(0, letter)
+    reversed_maybe_drome = ''.join(reversed_characters)
+    if maybe_palindrome == reversed_maybe_drome:
         return True
     else:
         return False
@@ -35,7 +32,6 @@ def result(boolean):
 def main():
     the_string = user_input()
     result(is_palindrome(the_string))
-
 
 
 
